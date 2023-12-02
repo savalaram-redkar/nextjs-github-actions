@@ -69,9 +69,6 @@ jobs:
 
   # Deploy job
   deploy:
-    #  to run job only on merges, rather than all pushes to the target branch
-    if: ${{ github.event.pull_request.merged }}
-
     runs-on: ubuntu-latest
 
     # Add a dependency to the build job
