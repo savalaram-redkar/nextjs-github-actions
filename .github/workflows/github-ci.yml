@@ -3,6 +3,9 @@ name: Build Next.js App
 on:
   push:
     branches: [master]
+  pull_request:
+    branches: [master]
+    types: [closed]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -67,6 +70,9 @@ jobs:
 
   # Deploy job
   deploy:
+    #  to run job only on merges, rather than all pushes to the target branch
+    if: ${{ github.event.pull_request.merged }}
+
     runs-on: ubuntu-latest
 
     # Add a dependency to the build job
